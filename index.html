@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Roadie Support Training Simulator</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="training-banner">TRAINING SIMULATION · FICTIONAL DATA · NO PRODUCTION ACTIONS</div>
+  <header class="topbar">
+    <button class="brand" data-route="landing" aria-label="Training home"><img src="assets/roadie-circle-r.png" alt="Roadie" /></button>
+    <div class="product-name"><strong>Support Training Simulator</strong><span>Guided practice</span></div>
+    <nav class="main-nav" aria-label="Primary">
+      <button data-route="landing">Practice</button>
+      <button data-route="queue">Chat queue</button>
+      <button data-route="search">Admin</button>
+    </nav>
+    <div class="session-chip"><span class="online-dot"></span> Training session</div>
+  </header>
+
+  <main id="app"></main>
+
+  <template id="landing-template">
+    <section class="landing page">
+      <div class="landing-hero">
+        <div class="hero-copy">
+          <p class="eyebrow">SAFE, HANDS-ON PRACTICE</p>
+          <h1>Practice the full support workflow.</h1>
+          <p>Accept a fictional customer chat, investigate in an Admin-inspired environment, reference the approved process and respond with confidence.</p>
+          <div class="hero-actions">
+            <button class="primary large" id="browseScenariosBtn">Enter Practice Mode</button>
+          </div>
+        </div>
+        <div class="hero-brand-card">
+          <img src="assets/roadie-logo-stack.png" alt="Roadie, a UPS Company" />
+          <strong>Training only</strong>
+          <span>No action affects a real account.</span>
+        </div>
+      </div>
+
+      <section class="scenario-library" id="scenarioLibrary">
+        <div class="section-heading">
+          <div><p class="eyebrow">PRACTICE MODE</p><h2>Choose a scenario</h2></div>
+          <p>Start with a realistic incoming chat and move between the conversation, Admin and a quick guide.</p>
+        </div>
+        <div class="scenario-cards" id="scenarioCards"></div>
+      </section>
+
+      <section class="how-it-works">
+        <h2>How it works</h2>
+        <div class="steps">
+          <article><span>1</span><h3>Accept the chat</h3><p>Read the driver’s message and identify the information you need.</p></article>
+          <article><span>2</span><h3>Investigate</h3><p>Search fictional records and compare related profiles.</p></article>
+          <article><span>3</span><h3>Take action</h3><p>Follow the approved duplicate-profile process.</p></article>
+          <article><span>4</span><h3>Respond</h3><p>Return to the chat, send a clear response and review coaching.</p></article>
+        </div>
+      </section>
+    </section>
+  </template>
+
+  <template id="brief-template">
+    <section class="brief-page page">
+      <button class="back-link" data-route="landing">← Back to scenarios</button>
+      <div class="brief-card">
+        <div class="brief-meta"><span id="briefDifficulty"></span><span id="briefCategory"></span></div>
+        <p class="eyebrow">GUIDED PRACTICE</p>
+        <h1 id="briefTitle"></h1>
+        <div class="case-callout"><strong>What you know before accepting</strong><p id="briefPrompt"></p></div>
+        <h2>Your objective</h2>
+        <p id="briefObjective"></p>
+        <h2>What you will practice</h2>
+        <ul id="briefSkills" class="skills-list"></ul>
+        <div class="mode-box">
+          <div><strong>Guided Practice</strong><p>Progress tracking, progressive hints and a quick guide are available.</p></div>
+          <span class="mode-pill">Recommended</span>
+        </div>
+        <button class="primary large full" id="beginScenarioBtn">Go to incoming chat queue</button>
+      </div>
+    </section>
+  </template>
+
+  <template id="queue-template">
+    <section class="support-shell page">
+      <div class="support-heading"><div><p class="eyebrow">ROADIE SUPPORT</p><h1>Incoming chats</h1></div><div class="queue-status"><span class="online-dot"></span>Available</div></div>
+      <div class="queue-layout">
+        <section class="queue-main card">
+          <div class="queue-toolbar"><strong>Waiting (1)</strong><span>Longest wait: 00:42</span></div>
+          <article class="chat-queue-item">
+            <div class="customer-avatar">AM</div>
+            <div class="queue-copy"><div><strong>Avery Morgan</strong><span>Waiting 00:42</span></div><p>“hi. i cant get into my account...”</p><div class="queue-tags"><span>Normal priority</span><span>Account access</span></div></div>
+            <button class="primary" id="acceptChatBtn">Accept chat</button>
+          </article>
+        </section>
+        <aside class="coach-intro card">
+          <p class="eyebrow">TRAINING COACH</p>
+          <h2>Start where the work starts.</h2>
+          <p>Accept the incoming chat. The driver may not use the same terminology as the knowledge article, so look for clues before deciding what to search.</p>
+          <div class="coach-tip"><strong>Practice goal</strong><span>Resolve the access issue while following the duplicate-profile process.</span></div>
+        </aside>
+      </div>
+    </section>
+  </template>
+
+  <template id="chat-template">
+    <section class="workspace page">
+      <div class="workspace-tabs">
+        <button class="active" data-route="chat">Customer chat <span class="tab-badge">1</span></button>
+        <button data-route="search">Admin</button>
+        <button id="openGuideTab">Quick guide</button>
+      </div>
+      <div class="chat-workspace">
+        <section class="chat-panel card">
+          <div class="chat-header">
+            <div><div class="customer-avatar">AM</div><div><strong>Avery Morgan</strong><span><span class="online-dot"></span> Online</span></div></div>
+            <div><small>Case</small><strong>SR-102384</strong></div>
+          </div>
+          <div class="conversation">
+            <div class="system-message">Chat accepted · Today at 12:42 PM</div>
+            <div class="message customer-message">
+              <div class="message-meta"><strong>Avery Morgan</strong><span>12:42 PM</span></div>
+              <p>hi. i cant get into my account. it keeps saying its locked and i need to work today. i tried making another account because i thought maybe i used the wrong email but now nothing is working. can someone help please?</p>
+              <p class="contact-line">Phone: (555) 010-1002</p>
+            </div>
+            <div id="sentMessages"></div>
+          </div>
+          <div class="composer">
+            <textarea id="chatReply" rows="4" placeholder="Type your reply to Avery..."></textarea>
+            <div class="composer-footer"><span>Training chat · No message is sent externally</span><button class="primary" id="sendReplyBtn">Send reply</button></div>
+          </div>
+        </section>
+        <aside class="customer-panel card">
+          <div class="panel-section"><p class="eyebrow">CUSTOMER</p><h2>Avery Morgan</h2></div>
+          <dl><dt>Phone</dt><dd><button class="copy-link" id="copyPhoneBtn">(555) 010-1002</button></dd><dt>Email</dt><dd>Unknown</dd><dt>Case</dt><dd>SR-102384</dd><dt>Status</dt><dd><span class="status-tag">In progress</span></dd></dl>
+          <button class="primary full" data-route="search">Open Admin</button>
+          <button class="secondary full" id="chatGuideBtn">Open quick guide</button>
+          <div id="chatCoachMount"></div>
+        </aside>
+      </div>
+    </section>
+  </template>
+
+  <template id="search-template">
+    <section class="workspace page">
+      <div class="workspace-tabs"><button data-route="chat">Customer chat</button><button class="active" data-route="search">Admin</button><button id="openGuideTab">Quick guide</button></div>
+      <div class="admin-title"><div><p class="eyebrow">ADMIN SIMULATOR</p><h1>Search</h1></div><button class="secondary" data-route="chat">← Return to chat</button></div>
+      <div class="hero-search compact">
+        <select id="searchFilter"><option value="all">Filter by</option><option value="profiles">Profiles</option><option value="gigs">Gigs</option></select>
+        <input id="searchInput" placeholder="Search by ID, email, name or phone number" />
+        <button id="searchBtn" class="primary">Search</button>
+      </div>
+      <div id="searchCoachMount"></div>
+      <section class="table-section" id="profilesSection"><div class="table-heading"><h2>Profiles</h2><span id="profileCount"></span></div><div class="table-wrap"><table><thead><tr><th>ID</th><th>Profile Type</th><th>Name</th><th>Email</th><th>Phone</th><th>Status</th><th>Completed Gigs</th><th>Consumer Report</th></tr></thead><tbody id="profilesBody"></tbody></table></div></section>
+      <section class="table-section" id="gigsSection"><div class="table-heading"><h2>Gigs</h2><span id="gigCount"></span></div><div class="table-wrap"><table><thead><tr><th>#</th><th>Title</th><th>Sender</th><th>State</th><th>Deadline</th><th>Offers</th><th>Event</th><th>Support ID</th></tr></thead><tbody id="gigsBody"></tbody></table></div></section>
+    </section>
+  </template>
+
+  <template id="profile-template">
+    <section class="workspace page">
+      <div class="workspace-tabs"><button data-route="chat">Customer chat</button><button class="active" data-route="search">Admin</button><button id="openGuideTab">Quick guide</button></div>
+      <div class="status-line"><span class="pill" id="profileStatusPill"></span><small id="profileCreated"></small></div>
+      <div class="profile-title"><div><span class="briefcase">▣</span><div><h1 id="profileName"></h1><span id="profileEmail"></span></div></div><button class="secondary" data-route="search">Back to results</button></div>
+      <div class="issue-alert">⚑ This profile is part of a fictional training scenario <span>No production data</span></div>
+      <div class="detail-layout">
+        <aside class="sidebar"><button class="selected">Profile</button><button>Gigs</button><button>Accounts (3)</button><button>Certifications</button><button>Related Profiles (2)</button><button>Images</button><button>Ratings</button><button>Notes</button><hr><button id="markPrimaryBtn">Mark as Primary</button><button id="unlockBtn">Unlock Account</button><button id="clearLicenseBtn">Clear License</button><button id="addNoteBtn">Add Note</button></aside>
+        <section class="detail-content"><div class="detail-grid" id="profileDetails"></div><section class="notes-section"><h2>Training Notes</h2><ul id="notesList"></ul></section></section>
+        <aside id="coachMount"></aside>
+      </div>
+    </section>
+  </template>
+
+  <template id="results-template">
+    <section class="results-page page"><div class="results-card"><div class="success-icon">✓</div><p class="eyebrow">SCENARIO COMPLETE</p><h1 id="resultsTitle"></h1><p id="resultsSummary"></p><div class="score-grid"><div><span id="resultScore"></span><small>Score</small></div><div><span id="resultTime"></span><small>Time</small></div><div><span id="resultHints"></span><small>Hints used</small></div></div><div class="feedback-block"><h2>What you did well</h2><ul id="positiveFeedback"></ul></div><div class="feedback-block improve"><h2>Why this worked</h2><p id="improvementFeedback"></p></div><div class="results-actions"><button class="primary" id="practiceAgainBtn">Practice Again</button><button class="secondary" data-route="landing">Choose Another Scenario</button></div></div></section>
+  </template>
+
+  <template id="coach-template">
+    <div class="scenario-panel">
+      <div class="scenario-header"><span>Training Coach</span><button id="resetScenarioBtn">Reset</button></div>
+      <h2 id="coachTitle"></h2><p id="coachPrompt"></p>
+      <h3>Goal</h3><p id="coachObjective"></p>
+      <h3>Progress</h3><ul id="progressList"></ul>
+      <div class="coach-actions"><button id="hintBtn" class="secondary">Show Hint</button><button id="kbaBtn" class="text-button">Quick Guide</button></div>
+      <p id="hintText" class="hint" hidden></p><div id="coachFeedback" class="coach-feedback" hidden></div>
+      <button id="submitScenarioBtn" class="primary full" disabled>Submit Scenario</button>
+    </div>
+  </template>
+
+  <dialog id="noteDialog"><form method="dialog" id="noteForm"><h2>Add training note</h2><p>Document the primary account and the duplicate relationship.</p><textarea id="noteText" rows="6" placeholder="Document what you found and what action you took..."></textarea><div class="dialog-actions"><button value="cancel" class="secondary">Cancel</button><button value="default" id="saveNoteBtn" class="primary">Save Note</button></div></form></dialog>
+  <dialog id="guideDialog"><form method="dialog"><p class="eyebrow">TRAINING QUICK GUIDE</p><h2>Handling duplicate profiles</h2><ol><li>Search Admin for all user-related accounts.</li><li>Confirm no account is permanently deactivated by Trust & Safety before changing information.</li><li>Determine the primary account by comparing consumer report status, identity details, completed Gigs and account activity.</li><li>Keep duplicate accounts locked. Unlock only the confirmed primary account.</li><li>Remove driver’s license information from each duplicate profile.</li><li>Add a note to the duplicate profile identifying the primary account, and a note to the primary profile identifying the duplicates.</li></ol><p class="privacy-note">Training summary based on the supplied knowledge article. Follow the current live KBA for production work.</p><button class="primary full">Close guide</button></form></dialog>
+  <dialog id="confirmDialog"><form method="dialog"><h2 id="confirmTitle">Confirm action</h2><p id="confirmText"></p><div class="dialog-actions"><button value="cancel" class="secondary">Cancel</button><button value="default" id="confirmActionBtn" class="primary">Confirm</button></div></form></dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
