@@ -13,7 +13,7 @@ const hints=[
   'Duplicate profiles should remain locked. Clear their license information and document the relationship on every affected profile.'
 ];
 let profiles=[];
-let state={route:'landing',activeProfileId:null,query:'',startedAt:null,caseAccepted:false,casePanelOpen:true,caseTab:'reply',messages:[],caseNotes:'',caseFields:{category:'',rootCause:'',gigId:''},hintsUsed:0,reviewedIds:[],actions:[],progress:{},casesCompleted:0,xp:0,readiness:62,streak:0};
+let state={route:'landing',activeProfileId:null,query:'',startedAt:null,caseAccepted:false,casePanelOpen:true,caseTab:'reply',messages:[],caseNotes:'',caseFields:{category:'',rootCause:'',gigId:''},hintsUsed:0,reviewedIds:[],actions:[],progress:{},casesCompleted:0,xp:0,readiness:0,streak:0};
 const app=document.getElementById('app');
 const $=s=>document.querySelector(s);
 const clone=v=>JSON.parse(JSON.stringify(v));
